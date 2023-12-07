@@ -125,10 +125,10 @@ user_proxy = UserProxyAgent(name="user_proxy",
 
 # Create researcher agent
 researcher = GPTAssistantAgent(
-    name = "researcher",
+    name = "topic_researcher",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_qyvioid5My8K3SdFClaEnwmB"
+        "assistant_id": "asst_3vWE29cK9lYyZkMy8eniKJ7f"
     }
 )
 
@@ -144,7 +144,7 @@ research_manager = GPTAssistantAgent(
     name="research_manager",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_C1Ta5XmmEcYD6vnOSVflnwG9"
+        "assistant_id": "asst_fSOrXoSRzCWsWcQhsCmupdzq"
     }
 )
 
@@ -154,7 +154,7 @@ director = GPTAssistantAgent(
     name = "director",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_zVBJGch5mOyCYl9H1J3L9Ime",
+        "assistant_id": "asst_ELkagfz2LBYdmHixssQ4mIfJ",
     }
 )
 
