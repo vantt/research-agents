@@ -103,6 +103,8 @@ def web_scraping(objective: str, url: str):
 # Function for update result file
 
 def update_result_file(topic, data):
+    with open(f"{topic}_text.md", "w") as file:
+        file.write(data)
 
 
 
