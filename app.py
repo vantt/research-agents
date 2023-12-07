@@ -23,7 +23,7 @@ config_list = config_list_from_json("OAI_CONFIG_LIST")
 # ------------------ Create functions ------------------ #
 
 # Function for google search
-def google_search(search_keyword):    
+def google_search(search_keyword):
     url = "https://google.serper.dev/search"
 
     payload = json.dumps({
@@ -45,16 +45,16 @@ def summary(objective, content):
 
     text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n"], chunk_size = 10000, chunk_overlap=500)
     docs = text_splitter.create_documents([content])
-    
+
     map_prompt = """
     Write a summary of the following text for {objective}:
     "{text}"
     SUMMARY:
     """
     map_prompt_template = PromptTemplate(template=map_prompt, input_variables=["text", "objective"])
-    
+
     summary_chain = load_summarize_chain(
-        llm=llm, 
+        llm=llm,
         chain_type='map_reduce',
         map_prompt = map_prompt_template,
         combine_prompt = map_prompt_template,
@@ -78,7 +78,7 @@ def web_scraping(objective: str, url: str):
 
     # Define the data to be sent in the request
     data = {
-        "url": url        
+        "url": url
     }
 
     # Convert Python object to JSON string
@@ -86,7 +86,7 @@ def web_scraping(objective: str, url: str):
 
     # Send the POST request
     response = requests.post(f"https://chrome.browserless.io/content?token={brwoserless_api_key}", headers=headers, data=data_json)
-    
+
     # Check the response status code
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
@@ -98,43 +98,12 @@ def web_scraping(objective: str, url: str):
         else:
             return text
     else:
-        print(f"HTTP request failed with status code {response.status_code}")        
+        print(f"HTTP request failed with status code {response.status_code}")
 
+# Function for update result file
 
-# Function for get airtable records
-def get_airtable_records(base_id, table_id):
-    url = f"https://api.airtable.com/v0/{base_id}/{table_id}"
+def update_result_file(data):
 
-    headers = {
-        'Authorization': f'Bearer {airtable_api_key}',
-    }
-
-    response = requests.request("GET", url, headers=headers)
-    data = response.json()
-    print(data)
-    return data
-
-
-# Function for update airtable records
-
-def update_single_airtable_record(base_id, table_id, id, fields):
-    url = f"https://api.airtable.com/v0/{base_id}/{table_id}"
-
-    headers = {
-        'Authorization': f'Bearer {airtable_api_key}',
-        "Content-Type": "application/json"
-    }
-
-    data = {
-        "records": [{
-            "id": id,
-            "fields": fields
-        }]
-    }
-
-    response = requests.patch(url, headers=headers, data=json.dumps(data))
-    data = response.json()
-    return data
 
 
 # ------------------ Create agent ------------------ #
@@ -183,8 +152,7 @@ director = GPTAssistantAgent(
 
 director.register_function(
     function_map={
-        "get_airtable_records": get_airtable_records,
-        "update_single_airtable_record": update_single_airtable_record
+        "update_result_file": update_result_file
     }
 )
 
