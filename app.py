@@ -109,6 +109,10 @@ def update_result_file(topic, data):
 
 # Function get topic and parameters to research
 def get_topic_and_parameters():
+    return {
+        'topics': ['Zapier Canvas', 'KYP.AI'],
+        'parameters': ['Quick overall review/summary', 'Supported integrations', 'Subscription plans or price by year']
+    }
 
 # ------------------ Create agent ------------------ #
 
