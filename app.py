@@ -102,7 +102,7 @@ def web_scraping(objective: str, url: str):
 
 # Function for update result file
 
-def update_result_file(data):
+def update_result_file(topic, data):
 
 
 
