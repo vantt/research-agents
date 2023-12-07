@@ -107,7 +107,6 @@ def update_result_file(topic, data):
         file.write(data)
 
 
-
 # ------------------ Create agent ------------------ #
 
 # Create user proxy agent
