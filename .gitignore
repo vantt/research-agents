@@ -8,3 +8,4 @@ __pycache__/gpt_assistant_agent.cpython-310.pyc
 .DS_Store
 .python-version
 .aider*
+*.md
