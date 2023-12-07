@@ -160,6 +160,7 @@ director = GPTAssistantAgent(
 
 director.register_function(
     function_map={
+        "get_topic_and_parameters": get_topic_and_parameters,
         "update_result_file": update_result_file
     }
 )
@@ -172,6 +173,6 @@ group_chat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config={"
 
 # ------------------ start conversation ------------------ #
 message = """
-Research the funding stage/amount & pricing for each company in the list: https://airtable.com/appj0J4gFpvLrQWjI/tblF4OmG6oLjYtgZl/viwmFx2ttAVrJm0E3?blocks=hide
+Research the 'Quick overall review/summary', 'Supported integrations', 'Subscription plans or price by year' for this process mining services 'Zapier Canvas', 'KYP.AI'
 """
 user_proxy.initiate_chat(group_chat_manager, message=message)
