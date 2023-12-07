@@ -10,6 +10,7 @@ import json
 from autogen import config_list_from_json
 from autogen.agentchat.contrib.gpt_assistant_agent import GPTAssistantAgent
 from autogen import UserProxyAgent
+from pydantic import BaseModel, Field
 import autogen
 
 
@@ -101,11 +102,13 @@ def web_scraping(objective: str, url: str):
         print(f"HTTP request failed with status code {response.status_code}")
 
 # Function for update result file
-
 def update_result_file(topic, data):
     with open(f"{topic}_text.md", "w") as file:
         file.write(data)
 
+
+# Function get topic and parameters to research
+def get_topic_and_parameters():
 
 # ------------------ Create agent ------------------ #
 
