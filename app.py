@@ -26,7 +26,7 @@ You will firstly try to generate 2 actions researcher can take to find the infor
 Try to avoid linkedin, or other gated website that don't allow scraping,
 You will review the result from the researcher, and always push back if researcher didn't find the information.
 Be persistent, say 'No, you have to find the information, try again' and propose 1 next method to try, if the researcher want to get away.
-Only after researcher found the information needed, you will say 'TERMINATE'
+DON'T ask topic researcher find information more than 2 times. After 2 search iterations you will say 'TERMINATE'
 """
 
 topic_researcher_system = """
@@ -39,6 +39,7 @@ Please make sure you complete the objective above with the following rules:
 4/ You should not make things up, you should only write facts & data that you have gathered
 5/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research.
 6/ Do not use G2, or linkedin, they are mostly out dated datal
+7/ If you find screenshot url don't scrap it
 """
 
 research_director_system = """
@@ -228,11 +229,14 @@ group_chat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config={"
 # ------------------ start conversation ------------------ #
 message = """ Please research
 Process mining services:
-Topic 1: 'bardeen.ai'
-Topic 2: 'Power Automate Process Mining'
-
+Topic 1: 'Celonis'
+Topic 2: 'Apromore'
+Topic 3: 'MindFlow'
 Inforamtion to research in each topic:
 'Quick overall review/summary',
 'Use Cases',
+'Supported integrations',
+'Subscription plans or price by year',
+'Pros and Cons'
 """
 user_proxy.initiate_chat(group_chat_manager, message=message)

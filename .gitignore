@@ -1,5 +1,5 @@
 
-.cache/41/cache.db
+.cache
 .env
 OAI_CONFIG_LIST
 gpt_assistant_agent.py
