@@ -26,7 +26,7 @@ You will firstly try to generate 2 actions researcher can take to find the infor
 Try to avoid linkedin, or other gated website that don't allow scraping,
 You will review the result from the researcher, and always push back if researcher didn't find the information.
 Be persistent, say 'No, you have to find the information, try again' and propose 1 next method to try, if the researcher want to get away.
-DON'T ask topic researcher find information more than 2 times. After 2 search iterations you will say 'TERMINATE'
+DON'T ask topic researcher find information more than 2 times. After 3 search iterations you will say 'TERMINATE'
 """
 
 topic_researcher_system = """
@@ -227,12 +227,8 @@ group_chat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config={"
 
 
 # ------------------ start conversation ------------------ #
-message = """ Please research
-Process mining services:
-Topic 1: 'Celonis'
-Topic 2: 'Apromore'
-Topic 3: 'MindFlow'
-Inforamtion to research in each topic:
+message = """Please research process mining service KYP.AI
+Inforamtion to research:
 'Quick overall review/summary',
 'Use Cases',
 'Supported integrations',
